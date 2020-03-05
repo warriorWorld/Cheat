@@ -54,7 +54,7 @@ public class Intensify {
                         System.out.println("success for intensify!!!");
                         mouseUtil.delayMove(weChatPosition);
                         mouseUtil.delayClick();
-                        keyboardUtil.delayInput("success with failed " + failedCount + "!!!");
+                        keyboardUtil.delayInput("success with failed " + failedCount);
                         keyboardUtil.delayInput(KeyEvent.VK_ENTER);
                         return;
                     }

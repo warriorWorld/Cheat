@@ -104,8 +104,6 @@ public class KeyboardUtil {
                 return KeyEvent.VK_9;
             case ' ':
                 return KeyEvent.VK_SPACE;
-            case '!':
-                return KeyEvent.VK_EXCLAMATION_MARK;
             default:
                 return -1;
         }
