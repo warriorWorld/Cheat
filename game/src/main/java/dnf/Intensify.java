@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
+import utils.KeyboardUtil;
 import utils.MouseUtil;
 
 public class Intensify {
@@ -22,6 +23,7 @@ public class Intensify {
     private static final int[] confirmPosition = new int[]{774, 608};
     private static final int[] confirm2Position = new int[]{798, 562};
     private static final int[] intensifyResutPosition = new int[]{791, 489};
+    private static final int[] weChatPosition = new int[]{414, 1055};
     private static final Color failedColor = new Color(194, 194, 194);
     private static final Color successColor = new Color(255, 255, 195);
 
@@ -31,9 +33,10 @@ public class Intensify {
             Robot mRobot = new Robot();
             Random random = new Random();
             MouseUtil mouseUtil = new MouseUtil();
+            KeyboardUtil keyboardUtil = new KeyboardUtil();
             mRobot.delay(5000);
-//            System.out.println("location:  " + mouseUtil.getMousePositionString());
-//            System.out.println("location:  " + mRobot.getPixelColor(intensifyResutPosition[0], intensifyResutPosition[1]));
+            System.out.println("location:  " + mouseUtil.getMousePositionString());
+            System.out.println("location:  " + mRobot.getPixelColor(intensifyResutPosition[0], intensifyResutPosition[1]));
             for (int i = 0; i < 500; i++) {
                 mouseUtil.delayMove(intensifyBtnPosition);
                 mouseUtil.delayClick();
@@ -49,6 +52,10 @@ public class Intensify {
                     System.out.println("success :" + continuousSuccessCount);
                     if (continuousSuccessCount >= continuousSuccessLimit) {
                         System.out.println("success for intensify!!!");
+                        mouseUtil.delayMove(weChatPosition);
+                        mouseUtil.delayClick();
+                        keyboardUtil.delayInput("success with failed " + failedCount + "!!!");
+                        keyboardUtil.delayInput(KeyEvent.VK_ENTER);
                         return;
                     }
                 } else {
