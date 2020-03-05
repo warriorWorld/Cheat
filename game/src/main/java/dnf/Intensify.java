@@ -15,7 +15,7 @@ import utils.MouseUtil;
 public class Intensify {
     private static final int continuousSuccessLimit = 3;
     private static int continuousSuccessCount = 0;
-    private static int failedCount = 0;
+    private static int intentsifyCount = 0;
     private static final int[] inventory1 = new int[]{871, 503};
     private static final int[] inventory2 = new int[]{917, 508};
     private static final int[] inventory3 = new int[]{936, 500};
@@ -37,7 +37,7 @@ public class Intensify {
             mRobot.delay(5000);
             System.out.println("location:  " + mouseUtil.getMousePositionString());
             System.out.println("location:  " + mRobot.getPixelColor(intensifyResutPosition[0], intensifyResutPosition[1]));
-            for (int i = 0; i < 500; i++) {
+            while (true) {
                 mouseUtil.delayMove(intensifyBtnPosition);
                 mouseUtil.delayClick();
                 mouseUtil.delayMove(inventory1);
@@ -47,6 +47,7 @@ public class Intensify {
                 mRobot.delay(8000);
                 Color resultColor = mRobot.getPixelColor(intensifyResutPosition[0], intensifyResutPosition[1]);
                 System.out.println("resultColor :" + resultColor);
+                intentsifyCount++;
                 if (resultColor.equals(successColor)) {
                     continuousSuccessCount++;
                     System.out.println("success :" + continuousSuccessCount);
@@ -54,14 +55,16 @@ public class Intensify {
                         System.out.println("success for intensify!!!");
                         mouseUtil.delayMove(weChatPosition);
                         mouseUtil.delayClick();
-                        keyboardUtil.delayInput("success with failed " + failedCount);
+                        keyboardUtil.delayInput("success with " + intentsifyCount);
                         keyboardUtil.delayInput(KeyEvent.VK_ENTER);
                         return;
                     }
                 } else {
-                    failedCount++;
-                    System.out.println("failed :" + failedCount);
-                    continuousSuccessCount = 0;
+                    System.out.println("failed :" + intentsifyCount);
+                    continuousSuccessCount--;
+                    if (continuousSuccessCount < 0) {
+                        continuousSuccessCount = 0;
+                    }
                 }
                 mouseUtil.delayMove(confirm2Position);
                 mouseUtil.delayClick();
