@@ -10,10 +10,14 @@ import utils.KeyboardUtil;
 import utils.MouseUtil;
 
 public class Dinosaur {
-    private static final int[] cactiPosition = new int[]{828, 258};
-    private static final int[] pterosaurPosition = new int[]{828, 230};
+    private static final int[] cactiPosition = new int[]{815, 253};
+    private static final int[] cactiPosition1 = new int[]{800, 253};
+    private static final int[] cactiPosition2 = new int[]{790, 253};
+    private static final int[] pterosaurPosition = new int[]{820, 225};
+    private static final int[] pterosaurPosition1 = new int[]{815, 225};
     private static final Color cactiColor = new Color(83, 83, 83);
     private static final Color emptyColor = new Color(255, 255, 255);
+
     public static void main(String[] args) {
 
         try {
@@ -28,15 +32,22 @@ public class Dinosaur {
                 @Override
                 public void run() {
                     while (true) {
-                        if (  mRobot.getPixelColor(cactiPosition[0], cactiPosition[1]).equals(cactiColor)) {
+                        if (mRobot.getPixelColor(cactiPosition[0], cactiPosition[1]).equals(cactiColor)) {
                             System.out.println("jump");
                             keyboardUtil.instantInput(KeyEvent.VK_SPACE);
+                        } else if (mRobot.getPixelColor(cactiPosition1[0], cactiPosition1[1]).equals(cactiColor)) {
+                            System.out.println("second jump");
+                            keyboardUtil.instantInput(KeyEvent.VK_SPACE);
+                        }else if (mRobot.getPixelColor(cactiPosition2[0], cactiPosition2[1]).equals(cactiColor)) {
+                            System.out.println("third jump");
+                            keyboardUtil.instantInput(KeyEvent.VK_SPACE);
+                        }  else if (mRobot.getPixelColor(pterosaurPosition[0], pterosaurPosition[1]).equals(cactiColor)) {
+                            System.out.println("down");
+                            keyboardUtil.instantInput(KeyEvent.VK_DOWN);
+                        }else if (mRobot.getPixelColor(pterosaurPosition1[0], pterosaurPosition1[1]).equals(cactiColor)) {
+                            System.out.println("second down");
+                            keyboardUtil.instantInput(KeyEvent.VK_DOWN);
                         }
-//                        else if ( mRobot.getPixelColor(cactiPosition[0], cactiPosition[1]).equals(emptyColor)&&
-//                                mRobot.getPixelColor(pterosaurPosition[0],pterosaurPosition[1]).equals(cactiColor)){
-//                            System.out.println("down");
-//                            keyboardUtil.instantInput(KeyEvent.VK_DOWN);
-//                        }
 //                        try {
 //                            Thread.sleep(30);
 //                        } catch (InterruptedException e) {

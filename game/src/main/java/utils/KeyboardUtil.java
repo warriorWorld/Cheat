@@ -23,7 +23,7 @@ public class KeyboardUtil {
 
     public void instantInput(int key) {
         mRobot.keyPress(key);
-        mRobot.delay(200 + mRandom.nextInt(150));
+        mRobot.delay(120);
         mRobot.keyRelease(key);
     }
 
