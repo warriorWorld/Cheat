@@ -21,6 +21,12 @@ public class KeyboardUtil {
         mRobot.keyRelease(key);
     }
 
+    public void instantInput(int key) {
+        mRobot.keyPress(key);
+        mRobot.delay(200 + mRandom.nextInt(150));
+        mRobot.keyRelease(key);
+    }
+
     public void delayInput(String str) {
         char[] inputs = str.toCharArray();
         for (char input : inputs) {
