@@ -38,6 +38,13 @@ public class MouseUtil {
         mRobot.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK);
     }
 
+    public void delayClickRight() {
+        mRobot.delay(200 + mRandom.nextInt(150));
+        mRobot.mousePress(MouseEvent.BUTTON3_DOWN_MASK);
+        mRobot.delay(200 + mRandom.nextInt(150));
+        mRobot.mouseRelease(MouseEvent.BUTTON3_DOWN_MASK);
+    }
+
     public void delayMove(int[] position) {
         mRobot.delay(200 + mRandom.nextInt(150));
         mRobot.mouseMove(position[0], position[1]);
